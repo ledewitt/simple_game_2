@@ -1,10 +1,10 @@
 module SimpleGame
-  class World  # better Game
+  class Game  # better Game
 
     def initialize # Need the locations populated and a player with locations
     
       @locations = [ ]
-      open("world.dat") do |f|
+      open(File.join(File.dirname(__FILE__), *%w[.. .. data world.dat])) do |f|
         location = { }
         f.each do |line|
           if line =~ /\A([A-Z]+):\s*(.+)\Z/
@@ -22,6 +22,40 @@ module SimpleGame
     end
   
     attr_reader :locations
+    
+    def start  # move into Game
+      puts "Would you like to play a game?"
+      world = Game.new
+      bob = Player.new(world)
+      bob.look
+      while command = gets.strip
+        interpret(command, bob)
+      end
+    end
+    
+    def interpret(command, bob)  # move into Game
+      words = command.split(" ")
+      case words.first
+      when 'quit', 'exit'
+        exit
+      when 'look'
+        bob.look
+      when 'pickup', 'get'
+        bob.pickup(words.last)
+      when 'walk', 'run'
+        bob.walk(words.last)
+      when 'inventory'
+        bob.inventory
+      when 'dunk'
+        bob.dunk
+      when 'weld'
+        bob.weld
+      when 'splash'
+        bob.splash
+      else
+        puts 'I do not recognize that command'
+      end
+    end
   
     private
   
@@ -36,39 +70,5 @@ module SimpleGame
                                                              
       @locations << Location.new(name, description, objects, exits)
     end
-  end                                                             
-
-  def interpret(command, bob)  # move into Game
-    words = command.split(" ")
-    case words.first
-    when 'quit', 'exit'
-      exit
-    when 'look'
-      bob.look
-    when 'pickup', 'get'
-      bob.pickup(words.last)
-    when 'walk', 'run'
-      bob.walk(words.last)
-    when 'inventory'
-      bob.inventory
-    when 'dunk'
-      bob.dunk
-    when 'weld'
-      bob.weld
-    when 'splash'
-      bob.splash
-    else
-      puts 'I do not recognize that command'
-    end
-  end
-
-  def start  # move into Game
-      puts "Would you like to play a game?"
-      world = World.new
-      bob = Player.new(world)
-      bob.look
-      while command = gets.strip
-        interpret(command, bob)
-      end
   end
 end

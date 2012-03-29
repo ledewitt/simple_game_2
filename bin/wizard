@@ -2,4 +2,4 @@
 
 require_relative "../lib/simple_game.rb"
 
-SimpleGame::World.new.start
+SimpleGame::Game.new.start
