@@ -4,7 +4,7 @@ module SimpleGame
     def initialize # Need the locations populated and a player with locations
     
       @locations = [ ]
-      open("world_2.dat") do |f|
+      open("world.dat") do |f|
         location = { }
         f.each do |line|
           if line =~ /\A([A-Z]+):\s*(.+)\Z/
