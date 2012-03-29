@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby -w
 
+require_relative "../lib/simple_game.rb"
+
 SimpleGame::Game.new.start
