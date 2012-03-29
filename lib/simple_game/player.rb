@@ -5,8 +5,8 @@ module SimpleGame
       @inventory = ["BELLY LINT"]
     end
   
-    def look
-      puts @location.description
+    def look    # <----- Leave look as a Player function
+      puts @location.description                  # <------ Move this functionality into location class
       @location.objects.each { |x| puts "There is a #{x} here."}
       @location.exit_descriptions.each { |x| puts "From here there is a #{x}."}
       # p @location.objects.class
@@ -38,7 +38,7 @@ module SimpleGame
   
     def dunk
       # Only if you have a chained bucket and are in the garden location
-      puts "You can't dunk here your not MJ"
+      puts "You can't dunk here you are not MJ"
     end
   
     def weld

@@ -23,9 +23,9 @@ module SimpleGame
   
     attr_reader :locations
     
-    def start  # move into Game
+    def start
       puts "Would you like to play a game?"
-      world = Game.new
+      world = Game.new             # <----- Don't think this makes sense any more now that this is moved into the class Game
       bob = Player.new(world)
       bob.look
       while command = gets.strip
@@ -33,7 +33,7 @@ module SimpleGame
       end
     end
     
-    def interpret(command, bob)  # move into Game
+    def interpret(command, bob)
       words = command.split(" ")
       case words.first
       when 'quit', 'exit'
