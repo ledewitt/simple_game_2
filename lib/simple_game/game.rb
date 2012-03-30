@@ -25,8 +25,7 @@ module SimpleGame
     
     def start
       puts "Would you like to play a game?"
-      world = Game.new             # <----- Don't think this makes sense any more now that this is moved into the class Game
-      bob = Player.new(world)
+      bob = Player.new(self)
       bob.look
       while command = gets.strip
         interpret(command, bob)
