@@ -10,16 +10,18 @@ module SimpleGame
     end
   
     def pickup(object)
+      is_obj_in_room = false
       @location.objects.each do |obj_in_room|  # use find()
         if obj_in_room == object.upcase
           @inventory << object.upcase
           @location.objects.delete(obj_in_room)
           puts "You have now picked up the #{@inventory.last}"
-        elsif
-          puts "There is no #{object.upcase} here."
+          is_obj_in_room = true
         end
       end
-      
+      if is_obj_in_room == false
+        puts "There is no #{object.upcase} here."
+      end
     end
   
     def walk(direction)
@@ -33,7 +35,6 @@ module SimpleGame
     end
   
     def inventory
-      # Inventory still need to create the array for inventory
       puts @inventory
     end
   
@@ -51,6 +52,7 @@ module SimpleGame
     end
   
     def weld
+      # Only if you have a bucket and a chain and are in the attic location
       if @location.name == "ATTIC" && @inventory.include?("BUCKET") && @inventory.include?("CHAIN")
         puts "You now have have a CHAINED_BUCKET"
         @inventory << "CHAINED_BUCKET"
