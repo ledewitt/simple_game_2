@@ -18,5 +18,13 @@ module SimpleGame
         @exits[direction] = locations.find { |l| l.name == location_name }
       end
     end
+    
+    def full_description
+      puts @description
+      @objects.each { |x| puts "There is a #{x} here."}  # <--------- Shouldn't be run if there are no objects
+      @exit_descriptions.each { |x| puts "From here there is a #{x}."}
+      # p @location.objects.class
+    end
+    
   end
 end

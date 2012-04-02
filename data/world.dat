@@ -1,11 +1,11 @@
 NAME: LIVING ROOM
 DESCRIPTION: You are in the LIVING ROOM of a wizards house.  There is a wizard snoring loudly on the couch.
-OBJECTS: WHISKEY BOTTLE, CHAIN
+OBJECTS: WHISKEY_BOTTLE, CHAIN
 EXITS: WEST door to the GARDEN, UPSTAIRS stairway to the ATTIC
 
 NAME: GARDEN
 DESCRIPTION: You are in a beautiful GARDEN.
-OBJECTS: WELL, FROG
+OBJECTS: WELL, FROG, BUCKET
 EXITS: EAST door LIVING ROOM
 
 NAME: ATTIC
