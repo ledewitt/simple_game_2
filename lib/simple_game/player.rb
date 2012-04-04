@@ -1,5 +1,6 @@
 module SimpleGame
   class Player
+    
     def initialize(world)
       @location = world.locations.find { |l| l.name == "LIVING ROOM" }
       @inventory = ["BELLY_LINT"]
@@ -19,11 +20,10 @@ module SimpleGame
     end
   
     def walk(direction)
-      # Change Bob's location on the world object
-      if location = @location.exits[direction.upcase]
-        @location = location
+      if new_location = @location.exit(direction)
+        @location = new_location
       else
-        puts "Unknown direction."
+        puts "You can't go that way!"
       end
       look
     end

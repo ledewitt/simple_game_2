@@ -1,6 +1,6 @@
 module SimpleGame
   class Location # Set up what I need for a location
-    attr_reader :name, :description, :objects, :exits, :exit_descriptions
+    attr_reader :name, :description, :objects, :exit_descriptions
   
     def initialize(name, description, objects, exits)
       @name              = name
@@ -29,9 +29,18 @@ module SimpleGame
       
     end
     
-    def exit
-      
+    def exit(direction)
+      @exits[direction.upcase]
     end
+    
+    # def exit(direction, location)
+    #   puts "You are here #{location.name}"
+    #   if location = @exits[direction.upcase]
+    #     @location = location
+    #   else
+    #     puts "Unknown direction."
+    #   end
+    # end
     
   end
 end
