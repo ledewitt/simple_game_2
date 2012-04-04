@@ -32,15 +32,5 @@ module SimpleGame
     def exit(direction)
       @exits[direction.upcase]
     end
-    
-    # def exit(direction, location)
-    #   puts "You are here #{location.name}"
-    #   if location = @exits[direction.upcase]
-    #     @location = location
-    #   else
-    #     puts "Unknown direction."
-    #   end
-    # end
-    
   end
 end

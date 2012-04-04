@@ -13,7 +13,7 @@ module SimpleGame
     def pickup(object)
       if obj = @location.object(object)
         @inventory << obj
-        puts "You now have in your possesion #{obj}."
+        puts "You now have in your possesion a #{obj}."
       else
         puts "There is no #{object.upcase} in the room"
       end
@@ -31,10 +31,27 @@ module SimpleGame
     def inventory
       puts @inventory
     end
+    
+    # take the name of a room and return true if that's where the player currently is.
+    
+    def in?(room)
+      if room == @location.name
+        return true
+      else
+        return false
+      end
+    end
+    
+    # take any number of object names as arguments and return true only if the player's inventory includes *all*
+    
+    def has?(*objects)
+      objects.all? {|o| @inventory.include?(o)}
+    end
   
     def dunk
       # Only if you have a chained bucket and are in the garden location
-      if @location.name == "GARDEN" && @inventory.include?("CHAINED_BUCKET")
+      
+      if in?("GARDEN") && has?("CHAINED_BUCKET")
         puts "You now have a FULL_CHAINED_BUCKET"
         @inventory << "FULL_CHAINED_BUCKET"
         @inventory.delete("CHAINED_BUCKET")
@@ -47,7 +64,8 @@ module SimpleGame
   
     def weld
       # Only if you have a bucket and a chain and are in the attic location
-      if @location.name == "ATTIC" && @inventory.include?("BUCKET") && @inventory.include?("CHAIN")
+      
+      if in?("ATTIC") && has?("BUCKET", "CHAIN")
         puts "You now have have a CHAINED_BUCKET"
         @inventory << "CHAINED_BUCKET"
         @inventory.delete("BUCKET")
@@ -59,7 +77,8 @@ module SimpleGame
   
     def splash
       # Only if you have a full bucket and are in the living room
-      if @location.name == "LIVING ROOM" && @inventory.include?("FULL_CHAINED_BUCKET")
+      
+      if in?("LIVING ROOM") && has?("FULL_CHAINED_BUCKET")
         puts "The wizard awakens from his slumber and greets you warmly.  He hands you the magic low-carb donut you win! THE END"
       elsif @location == "LIVING_ROOM"
         puts "You have nothing to splash the wizard with."
