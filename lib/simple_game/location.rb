@@ -1,7 +1,6 @@
 module SimpleGame
   class Location # Set up what I need for a location
-    attr_accessor :name, :description, :objects, :exits  # better as reader
-    attr_reader :exit_descriptions
+    attr_reader :name, :description, :objects, :exits, :exit_descriptions
   
     def initialize(name, description, objects, exits)
       @name              = name
@@ -24,6 +23,14 @@ module SimpleGame
       @objects.each { |x| puts "There is a #{x} here."}  # <--------- Shouldn't be run if there are no objects
       @exit_descriptions.each { |x| puts "From here there is a #{x}."}
       # p @location.objects.class
+    end
+    
+    def object
+      
+    end
+    
+    def exit
+      
     end
     
   end
