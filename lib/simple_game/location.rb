@@ -1,6 +1,6 @@
 module SimpleGame
   class Location # Set up what I need for a location
-    attr_reader :name, :description, :objects, :exit_descriptions
+    attr_reader :name, :description, :exit_descriptions
   
     def initialize(name, description, objects, exits)
       @name              = name
