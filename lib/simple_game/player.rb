@@ -35,11 +35,7 @@ module SimpleGame
     # take the name of a room and return true if that's where the player currently is.
     
     def in?(room)
-      if room == @location.name
-        return true
-      else
-        return false
-      end
+      room == @location.name
     end
     
     # take any number of object names as arguments and return true only if the player's inventory includes *all*
