@@ -11,11 +11,11 @@ module SimpleGame
     end
     
     def pickup(object)
-      if @location.objects.delete(object.upcase)
-        @inventory << object.upcase
-        puts "You have now picked up the #{object.upcase}."
+      if obj = @location.object(object)
+        @inventory << obj
+        puts "You now have in your possesion #{obj}."
       else
-        puts "There is no #{object.upcase} in the room."
+        puts "There is no #{object.upcase} in the room"
       end
     end
   
@@ -23,7 +23,7 @@ module SimpleGame
       if new_location = @location.exit(direction)
         @location = new_location
       else
-        puts "You can't go that way!"
+        puts "You can't go that wa!"
       end
       look
     end

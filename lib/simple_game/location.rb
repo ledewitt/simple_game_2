@@ -25,8 +25,8 @@ module SimpleGame
       # p @location.objects.class
     end
     
-    def object
-      
+    def object(obj)
+      @objects.delete(obj.upcase)
     end
     
     def exit(direction)
