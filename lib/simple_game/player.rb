@@ -8,42 +8,14 @@ module SimpleGame
     def look
       @location.full_description
     end
-  
-    # def pickup(object)
-    #   is_obj_in_room = false
-    #   @location.objects.each do |obj_in_room|  # use find()
-    #     if obj_in_room == object.upcase
-    #       @inventory << object.upcase
-    #       @location.objects.delete(obj_in_room)
-    #       puts "You have now picked up the #{@inventory.last}"
-    #       is_obj_in_room = true
-    #     end
-    #   end
-    #   if is_obj_in_room == false
-    #     puts "There is no #{object.upcase} here."
-    #   end
-    # end
     
     def pickup(object)
-      
       if @location.objects.delete(object.upcase)
         @inventory << object.upcase
         puts "You have now picked up the #{object.upcase}."
       else
         puts "There is no #{object.upcase} in the room."
       end
-      # puts "You made it here"
-      # @location.objects.find do |o|
-      #   puts "You made it inside find."
-      #   puts "Here is what is in room #{o}"
-      #   puts "Here is what bob is looking for #{object}"
-      #   if o == object.upcase
-      #     puts "You made the logic part."
-      #     @inventory << object.upcase
-      #     @location.objects.delete(o)
-      #     puts "You have now picked up the #{@inventory.last}"
-      #   end
-      # end
     end
   
     def walk(direction)
